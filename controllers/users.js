@@ -60,12 +60,12 @@ const User = require('../models/user');
   const usersDelete = async (req, res) => {
     const { id } = req.params;
 
-    //const usuario = await User.findByIdAndDelete(id);
-
     const usuario = await User.findByIdAndUpdate(id, {estado: false})
+    const usuarioAutenticado = req.usuario;
     
     res.json({
-        usuario
+        usuario,
+        usuarioAutenticado
     });
   }
 
